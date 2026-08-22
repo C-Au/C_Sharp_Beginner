@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C#_Beginner\\HelloCSharp.csproj": {}
+    "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C_Sharp_Beginner\\HelloCSharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C#_Beginner\\HelloCSharp.csproj": {
+    "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C_Sharp_Beginner\\HelloCSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C#_Beginner\\HelloCSharp.csproj",
+        "projectUniqueName": "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C_Sharp_Beginner\\HelloCSharp.csproj",
         "projectName": "HelloCSharp",
-        "projectPath": "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C#_Beginner\\HelloCSharp.csproj",
+        "projectPath": "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C_Sharp_Beginner\\HelloCSharp.csproj",
         "packagesPath": "C:\\Users\\aucol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C#_Beginner\\obj\\",
+        "outputPath": "C:\\Users\\aucol\\Desktop\\HOME\\CodingWithJoesph\\C_Sharp_Beginner\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aucol\\AppData\\Roaming\\NuGet\\NuGet.Config"
