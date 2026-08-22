@@ -1,3 +1,6 @@
+BankAccount account = new BankAccount("Colin", -500);
+Console.WriteLine($"{account.Owner}'s balance: {account.Balance}");
+
 public class BankAccount
 {
     public string Owner;
@@ -25,3 +28,4 @@ public class BankAccount
         Balance = balance;
     }
 }
+
