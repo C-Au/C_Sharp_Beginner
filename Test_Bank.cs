@@ -27,4 +27,32 @@ public class BankAccount
         Owner = owner;
         Balance = balance;
     }
+
+    public void Deposit(float amount)
+    {
+        if (amount < 0)
+        {
+            Console.WriteLine("amount cannot be a negative value.");
+            return;
+        }
+
+        Balance += amount;
+    }
+
+    public void Withdraw(float amount)
+    {
+        if (amount < 0)
+        {
+            Console.WriteLine("amount cannot be a negative value.");
+            return;
+        }
+
+        if (amount > Balance)
+        {
+            Console.WriteLine("amount cannot be greater than the balance.");
+            return;
+        }
+
+        Balance -= amount;
+    }
 }
