@@ -1,5 +1,7 @@
 BankAccount account = new BankAccount("Colin", -500);
 Console.WriteLine($"{account.Owner}'s balance: {account.Balance}");
+// account.Withdraw(10000);
+// account.Deposit(-50);
 
 public class BankAccount
 {
