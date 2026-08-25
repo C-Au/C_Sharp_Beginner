@@ -1,6 +1,6 @@
 # Test_Bank — What This Code Does
 
-This file is a tiny practice program about a bank account. In everyday terms: it creates an account for a person, tries to put money in it, and then prints how much is there.
+This file is a tiny practice program about a bank account. In everyday terms: it creates an account for a person, tries to start it with a bad amount, prints the corrected balance, and also knows how to deposit or withdraw money later.
 
 ## The big picture
 
@@ -9,8 +9,11 @@ Imagine a paper account card:
 - It has a name on it (who owns the account).
 - It has a balance (how much money is in it).
 - The bank has a rule: **you cannot have a negative balance**. If someone tries to open an account with a negative amount, the bank just sets the balance to **$0**.
+- You can **deposit** money, but only a positive amount.
+- You can **withdraw** money, but only a positive amount that is not larger than the current balance.
+- After a successful deposit or withdrawal, the program prints the new balance.
 
-That is exactly what this program does.
+That is exactly what this program does. The first two lines only open the account and print the starting balance. The deposit and withdraw methods are ready on the class for later use.
 
 ## Line by line (the part that actually runs)
 
@@ -124,6 +127,67 @@ That last point matters. Because it uses `Balance` (the property) instead of `_b
 
 If the constructor had said `_balance = balance;`, Colin’s account would have started at `-500`. Using `Balance = balance;` is what forces `-500` to become `0`.
 
+### `Deposit` — putting money in
+
+```csharp
+public void Deposit(float amount)
+{
+    if (amount < 0)
+    {
+        Console.WriteLine("amount cannot be a negative value.");
+        return;
+    }
+
+    Balance += amount;
+    Console.WriteLine($"New balance is: {Balance}");
+}
+```
+
+A **method** is an action the account can do. `Deposit` means “please add this amount.”
+
+The checks happen here, not in the `Balance` setter, because this is where the word `amount` exists. The setter only knows about `value`, the new total someone is trying to store.
+
+The rule is:
+
+- If `amount` is negative, print an error and **stop**. `return;` leaves the method immediately, so the balance does not change.
+- Otherwise, add the amount with `Balance += amount;`. That is short for `Balance = Balance + amount;`.
+- Then print the new balance.
+
+Using `Balance += amount` is important. It goes through the property again, so the “no negatives” rule still applies after the deposit.
+
+### `Withdraw` — taking money out
+
+```csharp
+public void Withdraw(float amount)
+{
+    if (amount < 0)
+    {
+        Console.WriteLine("amount cannot be a negative value.");
+        return;
+    }
+
+    if (amount > Balance)
+    {
+        Console.WriteLine("amount cannot be greater than the balance.");
+        return;
+    }
+
+    Balance -= amount;
+    Console.WriteLine($"New balance is: {Balance}");
+}
+```
+
+`Withdraw` has two guards:
+
+1. You cannot withdraw a negative amount.
+2. You cannot withdraw more than the current balance.
+
+If either check fails, the method prints a message and returns. The money stays put.
+
+If both checks pass, `Balance -= amount;` subtracts the money (same as `Balance = Balance - amount;`) and then the program prints the new balance.
+
+These methods are part of the class, but the current top-of-file code does not call them yet. They are ready for later practice, like `account.Deposit(100);` or `account.Withdraw(25);`.
+
 ## What happens when you run it
 
 1. C# builds a new `BankAccount` object.
@@ -138,6 +202,8 @@ Expected output:
 Colin's balance: 0
 ```
 
+No deposit or withdrawal runs in this first version, so you will not see the “New balance is…” messages unless you call those methods yourself.
+
 ## Everyday analogy
 
 Opening this account is like handing a teller a form that says:
@@ -147,6 +213,8 @@ Opening this account is like handing a teller a form that says:
 
 The teller looks at the form, says “we do not allow a negative starting amount,” writes **0** on the official record, and then reads that official record back to you.
 
+Later, if you try to deposit **-20**, the teller refuses and the card stays the same. If you try to withdraw more than is on the card, the teller also refuses. Only a valid deposit or withdrawal changes the official balance, and then the teller reads the new total back to you.
+
 ## A few beginner takeaways
 
 - **Class** = the blueprint.
@@ -154,6 +222,8 @@ The teller looks at the form, says “we do not allow a negative starting amount
 - **Field** = stored data (`Owner`, `_balance`).
 - **Property** = a safe way to read or change data, with rules.
 - **Constructor** = the setup that happens when a new object is created.
+- **Method** = an action the object can do (`Deposit`, `Withdraw`).
+- **`return;`** = stop here and leave the method. Useful after an error check.
 - **`public` vs `private`** = “anyone can touch this” vs “only this class can touch this.”
 
-The most important idea in this file is **data protection**. The program does not just store a number. It guards that number so a bad value cannot sneak in.
+The most important idea in this file is **data protection**. The program does not just store a number. It guards that number so a bad value cannot sneak in, both when the account is created and when money is added or removed.

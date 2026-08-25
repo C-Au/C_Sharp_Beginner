@@ -37,6 +37,7 @@ public class BankAccount
         }
 
         Balance += amount;
+        Console.WriteLine($"New balance is: {Balance}");
     }
 
     public void Withdraw(float amount)
@@ -54,5 +55,6 @@ public class BankAccount
         }
 
         Balance -= amount;
+        Console.WriteLine($"New balance is: {Balance}");
     }
 }
