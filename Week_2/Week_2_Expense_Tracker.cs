@@ -1,5 +1,4 @@
-Expense account = new Expense("Food", 500);
-Console.WriteLine($"{account.Owner}'s balance: {account.Balance}");
+
 public class Expense
 {
     public string Category;
