@@ -1,4 +1,3 @@
-
 public class Expense
 {
     public string Category;
@@ -21,5 +20,11 @@ public class Expense
                 _amount = value;
             }
         }
+    }
+
+    public Expense(string Category, float balance)
+    {
+        Category = category;
+        Balance = balance;
     }
 }
